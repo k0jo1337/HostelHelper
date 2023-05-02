@@ -1,0 +1,57 @@
+{% extends 'main/layout_2.html' %}
+{% load static %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <div class="top_bg">
+    </div>
+    <div class="profil_container">
+        <div class="profil_item_1">
+
+        </div>
+        <div class="profil_item_2">
+            <div class="profil_list">
+                <div class="profil_list_item">
+                    <p>Фамилия</p>
+                    <input type="text">
+                </div>
+                <div class="profil_list_item">
+                    <p>Отчество</p>
+                    <input type="text">
+                </div>
+                <div class="profil_list_item">
+                    <p>Институт</p>
+                    <input type="text">
+                </div>
+                <div class="profil_list_item">
+                    <p>Комната</p>
+                    <input type="text">
+                </div>
+            </div>
+            <div class="profil_list">
+                <div class="profil_list_item">
+                    <p>Имя</p>
+                    <input type="text">
+                </div>
+                <div class="profil_list_item">
+                    <p>Номер телефона</p>
+                    <input type="text">
+                </div>
+                <div class="profil_list_item">
+                    <p>Общежитие</p>
+                    <input type="text">
+                </div>
+                <div class="profil_list_item">
+                    <p>E-mail</p>
+                    <input type="text">
+                </div>
+            </div>
+            <div class="profil_change">
+                <input type="submit" value="Сохранить">
+            </div>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}

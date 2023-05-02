@@ -205,3 +205,81 @@ div.news_item{
     margin: auto;
     margin-bottom: 35px;
 }
+div.top_bg{
+      background: #385AA6;
+    width: 100%;
+    height: 30%;
+}
+div.profil_container{
+    position: absolute;
+    height: 550px;
+    width: 1050px;
+    top: 120px;
+    right: 50px;
+}
+div.profil_item_1{
+    height: 100%;
+    width: 30%;
+    background: #F8FAFC;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    float: left;
+}
+div.profil_item_2{
+    height: 100%;
+    width: 67%;
+    background: #F8FAFC;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    float: right;
+}
+div.profil_list{
+    width: 50%;
+    height: 85%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    float: left;
+}
+div.profil_list_item{
+    width: 85%;
+    margin: auto;
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+div.profil_list_item input{
+    padding: 16px 12px;
+    width: 100%;
+    height: 53px;
+    color: #94A3B8;
+    font-size: 14px;
+    background: none;
+    outline: none;
+    border: 1px solid #E2E8F0;
+    box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px rgb(56 90 166);
+}
+div.profil_list_item p{
+    margin-bottom: 5px;
+    color: #3c5ba4;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 20px;
+    margin-left: 20px;
+}
+div.profil_change{
+    width: 100%;
+    text-align: center;
+
+}
+div.profil_change input[type="submit"]{
+    background: #3c5ba4;
+    font-size: 16px;
+    color: #FFFFFF;
+    font-weight: bold;
+    width: 40%;
+    height: 53px;
+    outline: none;
+    border: 1px solid #E2E8F0;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
