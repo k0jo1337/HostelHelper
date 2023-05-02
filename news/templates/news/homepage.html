@@ -1,0 +1,23 @@
+{% extends 'main/layout_2.html' %}
+{% load static %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<!--
+    <li class="last">Вы вошли как:{{user.username}} <a href="{% url 'logout' %}">Выйти</a></li>
+-->
+    <div class="adaptiv_slice">
+        <div class="slice_logo">
+            <img src="{% static 'main/img/Hostel_logo.png' %}">
+        </div>
+        <div class="news_container">
+            <div class="news_item"></div>
+            <div class="news_item"></div>
+            <div class="news_item"></div>
+        </div>
+    </div>
+
+{% endif %}
+{% endblock %}

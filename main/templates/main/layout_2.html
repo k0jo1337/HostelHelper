@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'main/css/bootstrap.css' %}">
+    <link href="{% static 'main/css/main.css' %}" rel="stylesheet">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+
+    <div class="d-flex flex-column h-100 out">
+        <div class="sidebar_logo">
+            <img src="{% static 'main/img/Logo.png' %}">
+        </div>
+        <sidebar class="side">
+            <nav class="nav">
+                <ul class="nav_list">
+                    <li class="nav_list-item">
+                        <a href="" class="nav_list-link">
+                            <img src="{% static 'main/img/profil.png' %}">
+                        </a>
+                    </li>
+                    <li class="nav_list-item">
+                        <a href="" class="nav_list-link">
+                            <img src="{% static 'main/img/chat.png' %}">
+                        </a>
+                    </li>
+                    <li class="nav_list-item">
+                        <a href="" class="nav_list-link">
+                            <img src="{% static 'main/img/complaint.png' %}">
+                        </a>
+                    </li>  
+                </ul>
+            </nav>
+        </sidebar>
+        <div class="exit">
+            <a href="{% url 'logout' %}" class="exit-link">
+                <img src="{% static 'main/img/exit.png' %}">
+            </a>
+        </div>
+    </div>
+      
+      
+      
+      
+        {% block content %}
+        {% endblock %}
+</body>
+</html>

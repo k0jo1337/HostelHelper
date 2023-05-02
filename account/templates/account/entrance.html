@@ -1,0 +1,42 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}Авторизация{% endblock %}
+
+{% block content %}
+
+    <div class="parent_form">
+        <div class="form_logo">
+            <img src="{% static 'main/img/Hostel_logo.png' %}">
+        </div>
+        <div class="adaptiv_form">
+            <div class="input_form">
+                <h1>Авторизация</h1>
+            </div>
+            <hr>
+<form method="POST" action="{% url 'entrance' %}">
+    {% csrf_token %}
+
+<div class="form-error">{{form.non_field_errors}}</div>
+
+{% for f in form %}
+<p><label class="form-label" for="{{ f.if_for_label }}">{{f.label}}:</label>{{ f }}</p>
+<div class="form-error">{{f.errors}}</div>
+{% endfor %}
+
+     <div class="input_form">
+                <input name="login" type="submit" value="Авторизоваться" class="btn-primary" href="registration">
+            </div>
+      </div>
+
+</form>
+<h6>Нет аккаунта?<a href="registration">Регистрация</a></h6>
+    </div>
+ <div class="parent_entrance">
+        <div class="adaptiv_entrance">
+            <img src="{% static 'main/img/entrance_img.png' %}">
+        </div>
+    </div>
+
+
+{% endblock %}
