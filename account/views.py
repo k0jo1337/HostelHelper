@@ -53,6 +53,11 @@ def LogoutUser(request):
        # c_def = self.get_user_context(title="Авторизация")
         #return dict(list(context.items()) + list(c_def.items()))
 
+def Profile(request):
+    return render(request, 'account/profil.html')
+
+
+
 
     """def post(self, request, *args, **kwargs):
         form = CustomUserCreationForm(request.POST)
