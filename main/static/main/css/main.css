@@ -257,6 +257,50 @@ div.profil_item_1{
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     float: left;
 }
+div.profil_list_item_1{
+    width: 100%;
+    height: 60%;
+    margin: auto;
+    margin-top: 0px;
+}
+div.Profil_foto{
+    width: 100%;
+    text-align: center;
+}
+div.profil_name{
+    width: 100%;
+    text-align: center;
+}
+div.profil_name h3{
+    margin-bottom: 0px;
+}
+div.profil_name p{
+    color: #3c5ba4;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 0px;
+}
+div.profil_list_item_2{
+    width: 100%;
+    height: 33%;
+    margin: auto;
+    margin-top: 15px;
+}
+div.profil_inf{
+    height: 60px;
+    border-top: 1.5px solid black;
+    border-bottom: 1.5px solid black;
+    text-align: center; 
+    padding: 15px 0px 0px 0px;
+}
+div.profil_inf a{
+    text-decoration: none;
+    color: #3c5ba4;
+}
+div.ind{
+    border:0px
+}
 div.profil_item_2{
     height: 100%;
     width: 67%;
@@ -273,7 +317,7 @@ div.profil_list{
     float: left;
 }
 div.profil_list_item{
-    width: 85%;
+    width: 90%;
     margin: auto;
     margin-bottom: 10px;
     margin-top: 0px;

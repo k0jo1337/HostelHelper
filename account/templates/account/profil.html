@@ -9,47 +9,70 @@
     </div>
     <div class="profil_container">
         <div class="profil_item_1">
-
+            <div class="profil_list_item_1">
+                <div class="Profil_foto">
+                    <img src="media/avatar.jpg">
+                </div>
+                <div class="profil_name">
+                    <h3><b>{{user.last_name}}  {{user.first_name}}</b></h3>
+                    <p>Общежитие №</p>
+                    <p>Комната №</p>
+                </div>
+                <div>
+                </div>
+            </div>
+            <div class="profil_list_item_2">
+                <div class="profil_inf">
+                    <a href="">Активные обращения</a>
+                </div>
+                <div class="profil_inf ind">
+                    <a href="">История обращений</a>
+                </div>
+                <div class="profil_inf">
+                    <a href="">Оплата проживания</a>
+                </div>
+            </div>
         </div>
+
         <div class="profil_item_2">
             <div class="profil_list">
                 <div class="profil_list_item">
                     <p>Фамилия</p>
-                    <input type="text">
+                    <input type="text" id="last_name" name="Фамилия" value="{{user.last_name}}">
                 </div>
                 <div class="profil_list_item">
                     <p>Отчество</p>
-                    <input type="text">
+                    <input type="text" id="surname" name="Отчество" value="{{user.surname}}">
                 </div>
                 <div class="profil_list_item">
                     <p>Институт</p>
-                    <input type="text">
+                    <input type="" id="" name="Институт" value="">
                 </div>
                 <div class="profil_list_item">
                     <p>Комната</p>
-                    <input type="text">
+                    <input type="number" id="room_number" name="Номер комнаты" value="{{user.room_number}}">
                 </div>
             </div>
             <div class="profil_list">
                 <div class="profil_list_item">
                     <p>Имя</p>
-                    <input type="text">
+                    <input type="text" id="first_name" name="Имя" value="{{user.first_name}}">
                 </div>
                 <div class="profil_list_item">
                     <p>Номер телефона</p>
-                    <input type="text">
+                    <input type="text" id="" name="Номер телефона" value="">
                 </div>
                 <div class="profil_list_item">
                     <p>Общежитие</p>
-                    <input type="text">
+                    <input type="number" id="" name="Номер общежития" value="">
                 </div>
                 <div class="profil_list_item">
                     <p>E-mail</p>
-                    <input type="text">
+                    <input type="text" id="email" name="Почта" value="{{user.email}}" color="black">
                 </div>
             </div>
             <div class="profil_change">
-                <input type="submit" value="Сохранить">
+                <input type="submit" value="Сохранить изменения" >
             </div>
         </div>
     </div>
