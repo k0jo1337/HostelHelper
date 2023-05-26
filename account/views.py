@@ -1,11 +1,16 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, logout, login
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import LoginView, PasswordChangeView
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
-from account.forms import CustomUserCreationForm, LoginUserForm
-from account.models import CustomUser
+from django.views.generic import CreateView, ListView
+
+from account.email import send_contact_email_message
+from account.forms import CustomUserCreationForm, LoginUserForm, UpdateUserForm, UpdateProfileForm, AppealCreateForm
+from account.models import CustomUser, Appeal
+from account.utils import get_client_ip
 
 
 class SignUpView(CreateView):
@@ -48,25 +53,58 @@ def LogoutUser(request):
     logout(request)
     return redirect('/')
 
-    #def get_context_data(self, *, object_list=None, **kwargs):
-        #context = super().get_context_data(**kwargs)
-       # c_def = self.get_user_context(title="Авторизация")
-        #return dict(list(context.items()) + list(c_def.items()))
 
 def Profile(request):
-    return render(request, 'account/profil.html')
+    return render(request, 'account/profile.html')
 
 
+class AppealHistory(ListView):
+    model = Appeal
+    template_name = 'account/appeal_history.html'
+    context_object_name = 'appeal'
+
+    def get_queryset(self):
+        return Appeal.objects.all().filter(user=self.request.user)
+
+@login_required
+def profile(request):
+    if request.method == 'POST':
+        user_form = UpdateUserForm(request.POST, instance=request.user)
+        profile_form = UpdateProfileForm(request.POST, request.FILES, instance=request.user.profile)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, f'Изменения в профиле были сохранены.')
+            return redirect('profile')
+    else:
+        user_form = UpdateUserForm(instance=request.user)
+        profile_form = UpdateProfileForm(instance=request.user.profile)
+
+    return render(request, 'account/profile-changed.html', {'user_form': user_form, 'profile_form': profile_form})
 
 
-    """def post(self, request, *args, **kwargs):
-        form = CustomUserCreationForm(request.POST)
+class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
+    template_name = 'account/change_password.html'
+    success_message = "Ваш пароль успешно изменен."
+    success_url = reverse_lazy('profile')
+
+
+class AppealCreateView(SuccessMessageMixin, CreateView):
+    model = Appeal
+    form_class = AppealCreateForm
+    success_message = 'Ваше заявка успешно отправлена '
+    template_name = 'account/appeal.html'
+    extra_context = {'title': 'Контактная форма'}
+    success_url = reverse_lazy('homepage')
+
+    def form_valid(self, form):
         if form.is_valid():
-            user = form.save(commit=False)
-            user.save()
-            #return redirect('entrance')
+            requests = form.save(commit=False)
+            requests.ip_address = get_client_ip(self.request)
+            if self.request.user.is_authenticated:
+                requests.user = self.request.user
+            send_contact_email_message(requests.subject, requests.email, requests.content, requests.ip_address, requests.user_id)
+        return super().form_valid(form)
 
-        else:
-            return render(request, self.template_name, {'form': form})
-"""
 

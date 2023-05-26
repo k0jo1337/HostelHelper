@@ -1,0 +1,85 @@
+{% extends 'main/layout_2.html' %}
+{% load static %}
+
+{% block title %}Профиль{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="top_bg" xmlns="http://www.w3.org/1999/html">
+</div>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="profil_container">
+        <div class="profil_item_1">
+            <div class="profil_list_item_1">
+                <div class="Profil_foto">
+                    {{ profile_form.avatar }}
+                        <img class="rounded-circle article-img" src="{{ user.profile.avatar.url }}"/>
+                </div>
+                <div class="profil_name">
+                    <h3><b>{{user.last_name}}  {{user.first_name}}</b></h3>
+                    <p>Общежитие №{{user.hostel}}</p>
+                    <p>Комната №{{user.room_number}}</p>
+                </div>
+                <div>
+                </div>
+            </div>
+            <div class="profil_list_item_2">
+                <div class="profil_inf">
+                    <a href="">Активные обращения</a>
+                </div>
+                <div class="profil_inf ind">
+                    <a href="">История обращений</a>
+                </div>
+                <div class="profil_inf">
+                    <a href="">Оплата проживания</a>
+                </div>
+            </div>
+        </div>
+        <div class="profil_item_2">
+            <div class="profil_list">
+                <div class="profil_list_item">
+                    <p>Фамилия</p>
+                    {{user_form.last_name}}
+                </div>
+                <div class="profil_list_item">
+                    <p>Отчество</p>
+                    {{user_form.surname}}
+                </div>
+                <div class="profil_list_item">
+                    <p>Институт</p>
+                    {{user_form.university}}
+                </div>
+                <div class="profil_list_item">
+                    <p>Комната</p>
+                    {{user_form.room_number}}
+                </div>
+            </div>
+            <div class="profil_list">
+                <div class="profil_list_item">
+                    <p>Имя</p>
+                    {{user_form.first_name}}
+                </div>
+                <div class="profil_list_item">
+                    <p>Номер телефона</p>
+                    {{user_form.phone}}
+                </div>
+                <div class="profil_list_item">
+                    <p>Общежитие</p>
+                    {{user_form.hostel}}
+                </div>
+                <div class="profil_list_item">
+                    <p>E-mail</p>
+                    {{user_form.email}}
+                </div>
+            </div>
+            <div class="profil_change">
+                <button type="submit" class="btn-primary">Сохранить изменения</button>
+                <button type="reset" class="btn-primary">Сбросить</button>
+               <!-- <a href="{% url 'password_change' %}">Смена пароля</a>-->
+            </div>
+        </div>
+    </div>
+</form>
+{% endif %}
+{% endblock %}

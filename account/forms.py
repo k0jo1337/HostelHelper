@@ -1,10 +1,11 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm, AuthenticationForm
-from account.models import CustomUser
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from account.models import CustomUser, Profile, Appeal
 
 
 class CustomUserCreationForm(UserCreationForm):
     email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'class': 'form-control'}))
+
     class Meta:
         model = CustomUser
         fields = ('username', 'first_name', 'last_name', 'surname', 'room_number', 'email', 'password1', 'password2')
@@ -28,8 +29,37 @@ class LoginUserForm(AuthenticationForm):
     username = forms.CharField(label='Имя пользователя', widget=forms.TextInput(attrs={'class': 'form-control'}))
     password = forms.CharField(label='Пароль', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
-"""
-class CustomUserChangeForm(UserChangeForm):
+
+class UpdateUserForm(forms.ModelForm):
+    first_name = forms.CharField(max_length=50, required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    last_name = forms.CharField(max_length=50, required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    surname = forms.CharField(max_length=50, required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    email = forms.EmailField(required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    room_number = forms.IntegerField(widget=forms.NumberInput(attrs={'class': 'form-control'}))
+    phone = forms.CharField(max_length=11, required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    university = forms.CharField(max_length=50, required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    hostel = forms.IntegerField(widget=forms.NumberInput(attrs={'class': 'form-control'}))
+
     class Meta:
         model = CustomUser
-        fields = ('username', 'first_name', 'last_name', 'surname', 'room_number', 'email', 'password1', 'password2')"""
+        fields = ['first_name', 'last_name', 'surname', 'room_number', 'email', 'phone', 'university', 'hostel']
+
+
+class UpdateProfileForm(forms.ModelForm):
+    avatar = forms.ImageField(widget=forms.FileInput(attrs={'class': 'form-control-file'}))
+
+    class Meta:
+        model = Profile
+        fields = ['avatar']
+
+
+class AppealCreateForm(forms.ModelForm):
+
+    class Meta:
+        model = Appeal
+        fields = ('subject', 'email', 'content')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs.update({'class': 'form-control', 'autocomplete': 'off'})

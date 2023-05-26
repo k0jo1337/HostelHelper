@@ -266,6 +266,13 @@ div.profil_list_item_1{
 div.Profil_foto{
     width: 100%;
     text-align: center;
+    height: 70%;
+    margin-top: 10px;
+}
+div.Profil_foto img{
+    height: 210px;
+    width: 210px;
+    object-fit: fill;
 }
 div.profil_name{
     width: 100%;
@@ -348,7 +355,7 @@ div.profil_change{
     text-align: center;
 
 }
-div.profil_change input[type="submit"]{
+div.profil_change button{
     background: #3c5ba4;
     font-size: 16px;
     color: #FFFFFF;
@@ -359,6 +366,51 @@ div.profil_change input[type="submit"]{
     border: 1px solid #E2E8F0;
     box-sizing: border-box;
     border-radius: 8px;
+    margin-right: 32px;
+    margin-left: 32px;
+}
+div.container-appeal{
+    position: absolute;
+    top: 120px;
+    left: 570px;
+    height: 600px;
+    width: 500px;
 }
 
-
+div.appeal_item{
+    height: 100%;
+    width: 100%;
+    background: #F8FAFC;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    float: right;
+    border-radius: 15px;
+}
+div.appeal-title{
+    text-align: center;
+    margin-top: 30px;
+}
+div.appeal-title h3{
+    color: #385aa6;
+}
+div.appeal_form{
+    width: 85%;
+    margin: auto;
+    margin-top: 30px;
+}
+div.appeal_button{
+    margin-top: 150px;
+}
+div.appeal_button button{
+    background: #3c5ba4;
+    font-size: 16px;
+    color: #FFFFFF;
+    font-weight: bold;
+    width: 80%;
+    height: 53px;
+    outline: none;
+    border: 1px solid #E2E8F0;
+    box-sizing: border-box;
+    border-radius: 8px;
+    margin-right: 32px;
+    margin-left: 32px;
+}

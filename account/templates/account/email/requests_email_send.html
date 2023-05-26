@@ -1,0 +1,22 @@
+{% autoescape off %}
+
+Здравствуйте, Администратор,
+
+С контактной формы поступило новое обращение со следующим содержимым:
+
+    {{ content }}
+
+    IP Адрес отправителя: {{ ip }}
+    Email отправителя: {{ email }}
+    {% if user %}
+    Пользователь: {{ user.username }}
+    Имя: {{ user.first_name }}
+    Фамилия: {{ user.last_name }}
+    Университет: {{ user.university }}
+    Общежитие № {{ user.hostel }}
+    Комната № {{ user.room_number }}
+    {% endif %}
+
+Команда сайта HostelHelper
+
+{% endautoescape %}
