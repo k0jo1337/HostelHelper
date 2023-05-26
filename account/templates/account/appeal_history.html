@@ -1,16 +1,26 @@
 {% extends "main/layout_2.html" %}
 {% block content %}
+        <div class="top_bg">
+        </div>
+        <div class="profil_container scroll">
+                
+                <ul class="responsive-table">
+                        <li class="table-header">
+                          <div class="col col-1">Номер</div>
+                          <div class="col col-2">Время</div>
+                          <div class="col col-3">Тема</div>
+                          <div class="col col-4">Содержание</div>
+                        </li>
+                        {% for appeals in appeal %}
+                        <li class="table-row">
+                          <div class="col col-1" data-label="Job Id">{{ appeals.id }}</div>
+                          <div class="col col-2" data-label="Customer Name">{{ appeals.time_create }}</div>
+                          <div class="col col-3" data-label="Amount">{{ appeals.subject }}</div>
+                          <div class="col col-4" data-label="Payment Status">{{ appeals.content }}</div>
+                        </li>
+                
+              
+                {% endfor %}
 
-{% for appeals in appeal %}
-    <tr class='success'>
-        <td>{{ appeals.id }}</td>
-<!--        Номер обращения (думаю надо сделать чекбокс, типо по нему жмешь и вылазит остальная инфа, ну или опять же делать редирект на новую страницу)-->
-        <td>{{ appeals.time_create }}</td>
-<!--        дата создания-->
-        <td>{{ appeals.subject }}</td>
-<!--тема обращения-->
-        <td>{{ appeals.content }}</td>
-<!--        текст обращения-->
-    </tr>
-{% endfor %}
+        </div>
 {% endblock %}
